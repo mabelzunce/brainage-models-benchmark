@@ -163,6 +163,7 @@ def run_predictions_with_lrp(model_path, dataloader, save_individual_nifti=True,
 
         # resampleo al espacio de la referencia
         rel_resampled = resample_to_img(rel_nii, reference_nii, interpolation="nearest").get_fdata()
+        rel_resampled = rel_resampled / np.amax(np.abs(rel_resampled))
 
         if mean_relevance_sum is None:
             mean_relevance_sum = np.zeros_like(rel_resampled)

@@ -4,13 +4,15 @@ A comprehensive framework to benchmark, analyze, and develop brain age predictio
 Overview
 Brain Age Benchmark is an open-source repository dedicated to:
 
-🧪 Evaluating the performance and bias of existing deep learning models for brain age prediction
+🧪 Evaluating the performance and bias of existing models for brain age prediction
 
-🧠 Developing novel models to improve accuracy and generalization across datasets
+🧠 Developing novel models to improve accuracy and generalization across external datasets
 
 📊 Comparing brain age prediction results across multiple cohorts
 
-🌍 Exploring the impact of environmental and clinical stressors (e.g., long COVID, LMIC populations) on accelerated brain aging
+🔍 Using interpretability tools to identify the basis of brain age predictions
+
+🌍 Exploring the impact of environmental and clinical stressors (e.g., long COVID, MCI populations) on accelerated brain aging
 
 We aim to provide transparent, reproducible tools and metrics for the neuroimaging community to better understand and extend brain age modeling.
 

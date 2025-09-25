@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#cambiar estos datos por los nuevos
+#paths
 INPUT_DIR="/data/Lautaro/Documentos/BrainAgeCOVID/DATOS/Raw_T1/FULL_ADNI_images"
 OUTPUT_DIR="/data/Lautaro/Documentos/BrainAgeCOVID/DATOS/Preprocessed/BrainAgeNeXt/ADNI"
 mkdir -p "$OUTPUT_DIR"
@@ -14,7 +14,7 @@ for nii in "$INPUT_DIR"/*.nii "$INPUT_DIR"/*.nii.gz; do
     base_noext="${base%.nii.gz}"
     base_noext="${base_noext%.nii}"
 
-    echo "🔄 Procesando: $base"
+    echo "🔄 preprocesing: $base"
 
     # 1. N4 Bias Field Correction
     N4_OUT="${OUTPUT_DIR}/${base_noext}_n4.nii.gz"
@@ -25,7 +25,7 @@ for nii in "$INPUT_DIR"/*.nii "$INPUT_DIR"/*.nii.gz; do
     MASK_OUT="${OUTPUT_DIR}/${base_noext}_mask.mgz"
     mri_synthstrip -i "$N4_OUT" -o "$STRIP_OUT" -m "$MASK_OUT"
 
-    # 3. Registro rígido con ANTs
+    # 3. Rigid registration with ANTs
     OUT_PREFIX="${OUTPUT_DIR}/${base_noext}_ANTS"
     antsRegistrationSyN.sh -d 3 \
         -f "$MNI_TEMPLATE" \
@@ -35,4 +35,4 @@ for nii in "$INPUT_DIR"/*.nii "$INPUT_DIR"/*.nii.gz; do
         -n 8                  
 done
 
-echo "✅ Procesamiento completado en: $OUTPUT_DIR"
+echo "✅ Preprocesing complete: $OUTPUT_DIR"
