@@ -24,7 +24,7 @@ for nii in "$INPUT_DIR"/*.nii "$INPUT_DIR"/*.nii.gz; do
     MASK_OUT="${OUTPUT_DIR}/${base_noext}_mask.mgz"
     mri_synthstrip -i "$N4_OUT" -o "$STRIP_OUT" -m "$MASK_OUT"
 
-    # 3. Registro rígido a MNI
+    # 3. Affine registration with FLIRT
     FLIRT_OUT="${OUTPUT_DIR}/${base_noext}_MNI.nii.gz"
     MAT_OUT="${OUTPUT_DIR}/${base_noext}_to_MNI.mat"
     flirt -in "$STRIP_OUT" -ref "$MNI_TEMPLATE" -out "$FLIRT_OUT" -omat "$MAT_OUT" -dof 12

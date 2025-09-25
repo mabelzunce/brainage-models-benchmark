@@ -24,7 +24,7 @@ for nii in "$INPUT_DIR"/*.nii "$INPUT_DIR"/*.nii.gz; do
     MASK_OUT="${OUTPUT_DIR}/${base_noext}_mask.mgz"
     mri_synthstrip -i "$N4_OUT" -o "$STRIP_OUT" -m "$MASK_OUT"
 
-    # 3. Registro rígido con ANTs
+    # 3. Rigid registration with ANTs
     OUT_PREFIX="${OUTPUT_DIR}/${base_noext}_ANTS"
     antsRegistrationSyN.sh -d 3 \
         -f "$MNI_TEMPLATE" \
